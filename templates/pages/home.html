@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- 1. New In Section -->
+<section class="max-w-[1920px] mx-auto px-6 py-12">
+    <div class="flex justify-between items-end mb-8">
+        <h2 class="text-xl font-medium tracking-widest uppercase">New In</h2>
+        <a href="{% url 'product_list' %}"
+            class="text-xs underline underline-offset-4 decoration-1 hover:text-gray-600">View All</a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-10">
+        {% for product in new_in %}
+        <a href="{% url 'product_detail' product.id %}" class="group block cursor-pointer">
+            <div class="relative aspect-[3/4] overflow-hidden mb-4">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                    class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy">
+                {% elif product.gallery_images.first %}
+                <img src="{{ product.gallery_images.first.image.url }}" alt="{{ product.name }}"
+                    class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy">
+                {% else %}
+                <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500 text-xs">No Image
+                </div>
+                {% endif %}
+            </div>
+            <div class="space-y-1">
+                <p class="text-sm text-gray-900 font-light leading-tight">{{ product.name }}</p>
+                <p class="text-xs text-gray-500 font-light">{{ product.color|default:"" }}</p>
+                <p class="text-sm font-normal text-gray-900 mt-2">${{ product.price }}</p>
+            </div>
+        </a>
+        {% empty %}
+        <p class="col-span-full text-center text-gray-500">No new products found.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- 2. Editorial Grid - Full Width Grey Background -->
+<section class="w-full bg-[#f6f6f6] py-16 mb-12">
+    <div class="max-w-[1920px] mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <!-- Item 1 -->
+            <a href="#" class="group cursor-pointer">
+                <div class="aspect-square overflow-hidden mb-4 relative">
+                    <img src="{{ MEDIA_URL }}editorial_grid/aPoQWrpReVYa3mWy_end-mens-winter-coats-1200x1200.webp"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        alt="Layer Up" />
+                </div>
+                <h3 class="text-xs font-bold tracking-widest uppercase mb-1">LAYER UP</h3>
+                <p class="text-xs text-gray-500 font-light">Shop Coats</p>
+            </a>
+
+            <!-- Item 2 -->
+            <a href="#" class="group cursor-pointer">
+                <div class="aspect-square overflow-hidden mb-4 relative">
+                    <img src="{{ MEDIA_URL }}editorial_grid/aPoR8LpReVYa3mXj_end-mens-winter-knitwear-1200x1200.webp"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        alt="Knit Season" />
+                </div>
+                <h3 class="text-xs font-bold tracking-widest uppercase mb-1">KNIT SEASON</h3>
+                <p class="text-xs text-gray-500 font-light">Shop Knitwear</p>
+            </a>
+
+            <!-- Item 3 -->
+            <a href="#" class="group cursor-pointer">
+                <div class="aspect-square overflow-hidden mb-4 relative">
+                    <img src="{{ MEDIA_URL }}editorial_grid/aPoRJbpReVYa3mXP_end-mens-winter-accessories-1200x1200.webp"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        alt="The Details" />
+                </div>
+                <h3 class="text-xs font-bold tracking-widest uppercase mb-1">THE DETAILS</h3>
+                <p class="text-xs text-gray-500 font-light">Shop Accessories</p>
+            </a>
+
+            <!-- Item 4 -->
+            <a href="#" class="group cursor-pointer">
+                <div class="aspect-square overflow-hidden mb-4 relative">
+                    <img src="{{ MEDIA_URL }}editorial_grid/aPoRsLpReVYa3mXe_end-mens-winter-shoes-1200x1200.webp"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        alt="New Season Shoes" />
+                </div>
+                <h3 class="text-xs font-bold tracking-widest uppercase mb-1">NEW SEASON, NEW SHOES</h3>
+                <p class="text-xs text-gray-500 font-light">Shop Shoes</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 3. New In Sneakers Section -->
+<section class="max-w-[1920px] mx-auto px-6 py-12">
+    <div class="flex justify-between items-end mb-8">
+        <h2 class="text-xl font-medium tracking-widest uppercase">New In Sneakers</h2>
+        <a href="{% url 'product_list' %}?category=footwear"
+            class="text-xs underline underline-offset-4 decoration-1 hover:text-gray-600">View All</a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-10">
+        {% for product in sneakers %}
+        <a href="{% url 'product_detail' product.id %}" class="group block cursor-pointer">
+            <div class="relative aspect-[3/4] overflow-hidden mb-4">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                    class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy">
+                {% elif product.gallery_images.first %}
+                <img src="{{ product.gallery_images.first.image.url }}" alt="{{ product.name }}"
+                    class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy">
+                {% else %}
+                <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500 text-xs">No Image
+                </div>
+                {% endif %}
+            </div>
+            <div class="space-y-1">
+                <p class="text-sm text-gray-900 font-light leading-tight">{{ product.name }}</p>
+                <p class="text-xs text-gray-500 font-light">{{ product.color|default:"" }}</p>
+                <p class="text-sm font-normal text-gray-900 mt-2">${{ product.price }}</p>
+            </div>
+        </a>
+        {% empty %}
+        <p class="col-span-full text-center text-gray-500">No sneakers found.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- 4. Hero Banner -->
+<!-- 4. Hero Banner -->
+<section class="w-full h-[750px] relative mb-16">
+    <img src="{{ MEDIA_URL }}hero/aKb4LaTt2nPbakU1_hay-fermliving-lifestyle-30-07-25-HR-BrandPage-2400x1350.webp"
+        class="w-full h-full object-cover" alt="Lifestyle Hero" />
+    <div class="absolute inset-0 bg-black/10 flex flex-col justify-end pb-12">
+        <div class="max-w-[1920px] mx-auto px-6 w-full flex flex-col md:flex-row justify-between items-end">
+            <div class="mb-6 md:mb-0">
+                <h2 class="text-white text-3xl font-bold tracking-widest uppercase mb-2">New Arrivals : Lifestyle</h2>
+                <p class="text-white text-sm opacity-90">Elevate your homeware at END.</p>
+            </div>
+            <a href="{% url 'product_list' %}"
+                class="bg-transparent border border-white text-white px-8 py-3 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors w-max">
+                Shop Now
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Features Grid -->
+<section class="max-w-[1920px] mx-auto px-6 py-12">
+    <div class="flex justify-between items-end mb-8">
+        <h2 class="text-xl font-medium tracking-widest uppercase">Features</h2>
+        <a href="#" class="text-xs underline underline-offset-4 decoration-1 hover:text-gray-600">View All</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="group cursor-pointer">
+            <div class="aspect-[16/10] overflow-hidden mb-4">
+                <img src="{{ MEDIA_URL }}features/aVPY_HNYClf9osVd_IMG_9578.webp"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    alt="Feature 1" />
+            </div>
+            <p class="text-[10px] text-gray-500 mb-1">30/12/2025</p>
+            <h3 class="text-sm font-medium uppercase tracking-wide">Stylist Picks: Winter Sale</h3>
+        </div>
+        <div class="group cursor-pointer">
+            <div class="aspect-[16/10] overflow-hidden mb-4">
+                <img src="{{ MEDIA_URL }}features/aVJpU3NYClf9orBE_ACNE-STUDIOS-MENSWEAR_18-12-25_Email_1200x798.webp"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    alt="Feature 2" />
+            </div>
+            <p class="text-[10px] text-gray-500 mb-1">29/12/2025</p>
+            <h3 class="text-sm font-medium uppercase tracking-wide">New In: Acne Studios SS26</h3>
+        </div>
+        <div class="group cursor-pointer">
+            <div class="aspect-[16/10] overflow-hidden mb-4">
+                <img src="{{ MEDIA_URL }}features/aUp4-HNYClf9omqE_end-2025-community-moments-round-up-features-landscape-1600x1068.webp"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    alt="Feature 3" />
+            </div>
+            <p class="text-[10px] text-gray-500 mb-1">23/12/2025</p>
+            <h3 class="text-sm font-medium uppercase tracking-wide">END.'s Community Moments 2025</h3>
+        </div>
+    </div>
+</section>
+{% endblock %}

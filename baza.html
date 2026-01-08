@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>END. | Contemporary Fashion & Streetwear</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'end-black': '#111111',
+                        'end-gray': '#f5f5f5',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 120s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #ffffff;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Custom utility for marquee */
+        .animate-marquee {
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-[#111] bg-white flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white">
+        <!-- Marquee Bar -->
+        <div class="bg-black text-white text-[10px] py-2 overflow-hidden flex whitespace-nowrap tracking-wider">
+            <!-- First scrolling container -->
+            <div class="animate-marquee flex flex-shrink-0 items-center">
+                <span class="mx-4">ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mr-4">•</span>
+            </div>
+            <!-- Duplicate container for seamless loop -->
+            <div class="animate-marquee flex flex-shrink-0 items-center">
+                <span class="mx-4">ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mr-4">•</span>
+                <span class="mr-4">NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mr-4">•</span>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="border-b border-gray-100">
+            <div class="max-w-[1920px] mx-auto px-6 h-20 flex items-center justify-between">
+
+                <!-- Left: Gender Toggle -->
+                <div class="hidden md:flex gap-6 text-xs tracking-widest font-medium">
+                    <a href="#" class="text-black border-b border-black pb-0.5">MEN</a>
+                    <a href="#" class="text-gray-400 hover:text-black transition-colors">WOMEN</a>
+                </div>
+
+                <!-- Center: Logo -->
+                <div class="absolute left-1/2 transform -translate-x-1/2">
+                    <a href="#" class="text-3xl font-bold tracking-[0.2em]">END.</a>
+                </div>
+
+                <!-- Right: Actions -->
+                <div class="flex items-center gap-6">
+                    <div class="hidden lg:flex items-center bg-gray-50 px-3 py-2 rounded-sm w-64">
+                        <i data-lucide="search" class="w-4 h-4 text-gray-400"></i>
+                        <input type="text" placeholder="Search menswear"
+                            class="bg-transparent border-none outline-none text-xs ml-2 w-full placeholder-gray-500" />
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-800">
+                        <button><i data-lucide="user" class="w-5 h-5 stroke-[1.5]"></i></button>
+                        <button><i data-lucide="heart" class="w-5 h-5 stroke-[1.5]"></i></button>
+                        <button onclick="toggleCart()"><i data-lucide="shopping-bag"
+                                class="w-5 h-5 stroke-[1.5]"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="hidden lg:flex justify-center h-12 items-center gap-8 text-[13px] font-medium text-gray-800">
+                <a href="#" class="hover:underline underline-offset-4 decoration-1">All</a>
+                <a href="#" class="hover:underline underline-offset-4 decoration-1">Clothing</a>
+                <a href="#" class="hover:underline underline-offset-4 decoration-1">Footwear</a>
+                <a href="#" class="hover:underline underline-offset-4 decoration-1">Accessories</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-[100] flex justify-end hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px] transition-opacity" onclick="toggleCart()"></div>
+
+        <!-- Drawer Panel -->
+        <div
+            class="relative w-full max-w-[500px] bg-white h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-100">
+                <button onclick="toggleCart()" class="p-2 -ml-2 hover:bg-gray-50 rounded-full">
+                    <i data-lucide="x" class="w-5 h-5 text-gray-800"></i>
+                </button>
+                <h2 class="text-xs font-bold tracking-widest uppercase flex-1 text-center pr-8">Your Cart (1)</h2>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 overflow-y-auto p-6">
+                <div class="flex gap-6 mb-8">
+                    <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=1000&auto=format&fit=crop"
+                        alt="Cornaro Hiking Shoe" class="w-24 h-32 object-cover bg-gray-50" />
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="text-sm text-gray-900 leading-tight pr-4">Diemme Cornaro Hiking Shoe</h3>
+                            <button class="text-gray-400 hover:text-black transition-colors"><i data-lucide="trash-2"
+                                    class="w-4 h-4"></i></button>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-1">Fallow Suede</p>
+                        <p class="text-xs text-gray-500 mb-4">Medium</p>
+
+                        <div class="flex justify-between items-end">
+                            <div class="flex items-center border border-gray-200 h-8">
+                                <button class="px-3 h-full text-gray-500 hover:bg-gray-50 text-xs">-</button>
+                                <span class="px-3 h-full flex items-center text-xs font-medium">1</span>
+                                <button class="px-3 h-full text-gray-500 hover:bg-gray-50 text-xs">+</button>
+                            </div>
+                            <p class="text-sm font-medium">$469.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="border-t border-gray-100 p-6 bg-white space-y-4">
+                <div class="bg-[#f0f9f4] text-[#1e583e] p-3 text-xs flex items-center gap-3 rounded-sm">
+                    <span class="text-base">🚛</span>
+                    <span>This order qualifies for <strong>free shipping</strong></span>
+                </div>
+
+                <div class="space-y-2 text-sm text-gray-600 pt-2">
+                    <div class="flex justify-between">
+                        <span>Subtotal:</span>
+                        <span class="font-medium text-black">$469.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Shipping:</span>
+                        <span class="font-medium text-black uppercase">Free</span>
+                    </div>
+                </div>
+
+                <div class="flex justify-between text-base font-bold text-black pt-4 border-t border-gray-100">
+                    <span>Total:</span>
+                    <span>$469.00</span>
+                </div>
+
+                <div class="pt-2">
+                    <button
+                        class="w-full flex justify-between items-center text-xs text-gray-500 hover:text-black mb-4 transition-colors">
+                        <span class="flex items-center gap-2"><i data-lucide="credit-card" class="w-4 h-4"></i> Add
+                            promo code / gift card</span>
+                        <span>+</span>
+                    </button>
+
+                    <button
+                        class="w-full bg-[#1a1a1a] text-white py-4 text-xs font-bold tracking-[0.15em] hover:bg-black transition-colors flex justify-center items-center gap-2">
+                        <i data-lucide="lock" class="w-3 h-3"></i> CHECKOUT SECURELY
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow pb-20">
+
+        <!-- New In Section -->
+        <section class="max-w-[1920px] mx-auto px-6 py-12">
+            <div class="flex justify-between items-end mb-8">
+                <h2 class="text-xl font-medium tracking-widest uppercase">New In</h2>
+                <a href="#" class="text-xs underline underline-offset-4 decoration-1 hover:text-gray-600">View All</a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-10">
+                <!-- Product 1 -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop"
+                            alt="Manteau Raglan Sleeve Coat"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">A.P.C.</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Manteau Raglan Sleeve Coat</p>
+                        <p class="text-xs text-gray-500 font-light">Heathered Anthracite</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$995</p>
+                    </div>
+                </a>
+
+                <!-- Product 2 -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1000&auto=format&fit=crop"
+                            alt="Chalet T-Shirt"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">about:blank</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Chalet T-Shirt</p>
+                        <p class="text-xs text-gray-500 font-light">Oat</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$105</p>
+                    </div>
+                </a>
+
+                <!-- Product 3 -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?q=80&w=1000&auto=format&fit=crop"
+                            alt="Vinnie Scarf"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Acne Studios</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Vinnie Scarf</p>
+                        <p class="text-xs text-gray-500 font-light">Dark Brown Melange</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$445</p>
+                    </div>
+                </a>
+
+                <!-- Product 4 -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000&auto=format&fit=crop"
+                            alt="Moonlight Pack Hoodie"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Rhude</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Moonlight Pack Hoodie</p>
+                        <p class="text-xs text-gray-500 font-light">Vintage Black/ White</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$759</p>
+                    </div>
+                </a>
+
+                <!-- Product 5 -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1000&auto=format&fit=crop"
+                            alt="Gothik Wash Hooded Denim Jacket"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Acne Studios</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Gothik Wash Hooded Denim Jacket</p>
+                        <p class="text-xs text-gray-500 font-light">Washed Black</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$915</p>
+                    </div>
+                </a>
+
+                <!-- Product 6 -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1000&auto=format&fit=crop"
+                            alt="Tela Paracadute Cargo Trousers"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Stone Island</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Tela Paracadute Cargo Trousers</p>
+                        <p class="text-xs text-gray-500 font-light">Navy Blue</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$459</p>
+                    </div>
+                </a>
+
+                <!-- Product 7 -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=1000&auto=format&fit=crop"
+                            alt="Cornaro Hiking Shoe"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Diemme</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Cornaro Hiking Shoe</p>
+                        <p class="text-xs text-gray-500 font-light">Fallow Suede</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$469</p>
+                    </div>
+                </a>
+
+                <!-- Product 8 -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop"
+                            alt="K-way Unisex Jacket"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Comme des Garçons Play</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">K-way Unisex Jacket</p>
+                        <p class="text-xs text-gray-500 font-light">Beige/Black</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$235</p>
+                    </div>
+                </a>
+
+                <!-- Product 9 -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=1000&auto=format&fit=crop"
+                            alt="Xt-Whisper Sneaker"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Salomon</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Xt-Whisper Sneaker</p>
+                        <p class="text-xs text-gray-500 font-light">White, Lunar Rock & Ftw Silver</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$189</p>
+                    </div>
+                </a>
+
+                <!-- Product 10 -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1000&auto=format&fit=crop"
+                            alt="2023 Black Trafalgar Wide Leg Jeans"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Acne Studios</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">2023 Black Trafalgar Wide Leg Jeans</p>
+                        <p class="text-xs text-gray-500 font-light">Black</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$785</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Editorial Grid - Full Width Grey Background -->
+        <section class="w-full bg-[#f6f6f6] py-16 mb-12">
+            <div class="max-w-[1920px] mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+                    <!-- Item 1 -->
+                    <a href="#" class="group cursor-pointer">
+                        <div class="aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1551488852-d814c937d1d1?q=80&w=1000&auto=format&fit=crop"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                alt="Layer Up" />
+                        </div>
+                        <h3 class="text-xs font-bold tracking-widest uppercase mb-1">LAYER UP</h3>
+                        <p class="text-xs text-gray-500 font-light">Shop Coats</p>
+                    </a>
+
+                    <!-- Item 2 -->
+                    <a href="#" class="group cursor-pointer">
+                        <div class="aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1621335829175-95f437384d7c?q=80&w=1000&auto=format&fit=crop"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                alt="Knit Season" />
+                        </div>
+                        <h3 class="text-xs font-bold tracking-widest uppercase mb-1">KNIT SEASON</h3>
+                        <p class="text-xs text-gray-500 font-light">Shop Knitwear</p>
+                    </a>
+
+                    <!-- Item 3 -->
+                    <a href="#" class="group cursor-pointer">
+                        <div class="aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=1000&auto=format&fit=crop"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                alt="The Details" />
+                        </div>
+                        <h3 class="text-xs font-bold tracking-widest uppercase mb-1">THE DETAILS</h3>
+                        <p class="text-xs text-gray-500 font-light">Shop Accessories</p>
+                    </a>
+
+                    <!-- Item 4 -->
+                    <a href="#" class="group cursor-pointer">
+                        <div class="aspect-square overflow-hidden mb-4 relative">
+                            <img src="https://images.unsplash.com/photo-1605732562742-3023a888e56e?q=80&w=1000&auto=format&fit=crop"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                alt="New Season Shoes" />
+                        </div>
+                        <h3 class="text-xs font-bold tracking-widest uppercase mb-1">NEW SEASON, NEW SHOES</h3>
+                        <p class="text-xs text-gray-500 font-light">Shop Shoes</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- New in Sneakers Section -->
+        <section class="max-w-[1920px] mx-auto px-6 py-12">
+            <div class="flex justify-between items-end mb-8">
+                <h2 class="text-xl font-medium tracking-widest uppercase">New in Sneakers</h2>
+                <a href="#" class="text-xs underline underline-offset-4 decoration-1 hover:text-gray-600">View All</a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-10">
+                <!-- 1. Diemme -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=1000&auto=format&fit=crop"
+                            alt="Cornaro Hiking Shoe"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Diemme</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Cornaro Hiking Shoe</p>
+                        <p class="text-xs text-gray-500 font-light">Fallow Suede</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$469</p>
+                    </div>
+                </a>
+
+                <!-- 2. Salomon -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=1000&auto=format&fit=crop"
+                            alt="Xt-Whisper Sneaker"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Salomon</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Xt-Whisper Sneaker</p>
+                        <p class="text-xs text-gray-500 font-light">White, Lunar Rock & Ftw Silver</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$189</p>
+                    </div>
+                </a>
+
+                <!-- 3. New Balance (LATEST) -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?q=80&w=1000&auto=format&fit=crop"
+                            alt="Abzorb 2000 Sneaker"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                        <span
+                            class="absolute top-2 left-2 flex items-center gap-1.5 text-[10px] font-bold tracking-widest uppercase">
+                            <span class="w-1.5 h-1.5 bg-black"></span>
+                            LATEST
+                        </span>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">New Balance</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Abzorb 2000 Sneaker</p>
+                        <p class="text-xs text-gray-500 font-light">Black</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$225</p>
+                    </div>
+                </a>
+
+                <!-- 4. adidas (LATEST) -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1000&auto=format&fit=crop"
+                            alt="Superstar II Anthony Edwards"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                        <span
+                            class="absolute top-2 left-2 flex items-center gap-1.5 text-[10px] font-bold tracking-widest uppercase">
+                            <span class="w-1.5 h-1.5 bg-black"></span>
+                            LATEST
+                        </span>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">adidas</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Superstar II Anthony Edwards</p>
+                        <p class="text-xs text-gray-500 font-light">Navy Croc</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$170</p>
+                    </div>
+                </a>
+
+                <!-- 5. Diemme (Repeat starts) -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=1000&auto=format&fit=crop"
+                            alt="Cornaro Hiking Shoe"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Diemme</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Cornaro Hiking Shoe</p>
+                        <p class="text-xs text-gray-500 font-light">Fallow Suede</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$469</p>
+                    </div>
+                </a>
+
+                <!-- 6. Salomon -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=1000&auto=format&fit=crop"
+                            alt="Xt-Whisper Sneaker"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Salomon</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Xt-Whisper Sneaker</p>
+                        <p class="text-xs text-gray-500 font-light">White, Lunar Rock & Ftw Silver</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$189</p>
+                    </div>
+                </a>
+
+                <!-- 7. New Balance (LATEST) -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?q=80&w=1000&auto=format&fit=crop"
+                            alt="Abzorb 2000 Sneaker"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                        <span
+                            class="absolute top-2 left-2 flex items-center gap-1.5 text-[10px] font-bold tracking-widest uppercase">
+                            <span class="w-1.5 h-1.5 bg-black"></span>
+                            LATEST
+                        </span>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">New Balance</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Abzorb 2000 Sneaker</p>
+                        <p class="text-xs text-gray-500 font-light">Black</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$225</p>
+                    </div>
+                </a>
+
+                <!-- 8. adidas (LATEST) -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1000&auto=format&fit=crop"
+                            alt="Superstar II Anthony Edwards"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                        <span
+                            class="absolute top-2 left-2 flex items-center gap-1.5 text-[10px] font-bold tracking-widest uppercase">
+                            <span class="w-1.5 h-1.5 bg-black"></span>
+                            LATEST
+                        </span>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">adidas</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Superstar II Anthony Edwards</p>
+                        <p class="text-xs text-gray-500 font-light">Navy Croc</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$170</p>
+                    </div>
+                </a>
+
+                <!-- 9. Diemme -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?q=80&w=1000&auto=format&fit=crop"
+                            alt="Cornaro Hiking Shoe"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Diemme</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Cornaro Hiking Shoe</p>
+                        <p class="text-xs text-gray-500 font-light">Fallow Suede</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$469</p>
+                    </div>
+                </a>
+
+                <!-- 10. Salomon -->
+                <a href="#" class="group block cursor-pointer">
+                    <div class="relative aspect-[3/4] overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=1000&auto=format&fit=crop"
+                            alt="Xt-Whisper Sneaker"
+                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-light text-gray-900">Salomon</h3>
+                        <p class="text-xs text-gray-500 font-light truncate">Xt-Whisper Sneaker</p>
+                        <p class="text-xs text-gray-500 font-light">White, Lunar Rock & Ftw Silver</p>
+                        <p class="text-sm font-normal text-gray-900 mt-2">$189</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Hero Banner -->
+        <section class="w-full h-[600px] relative mt-10 mb-20">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2000&auto=format&fit=crop"
+                class="w-full h-full object-cover" alt="Lifestyle Hero" />
+            <div class="absolute inset-0 bg-black/10 flex flex-col justify-end p-12 md:p-24">
+                <h2 class="text-white text-3xl font-bold tracking-widest uppercase mb-2">New Arrivals : Lifestyle</h2>
+                <p class="text-white text-sm mb-8 opacity-90">Elevate your homeware at END.</p>
+                <a href="#"
+                    class="bg-transparent border border-white text-white px-8 py-3 text-xs tracking-widest uppercase hover:bg-white hover:text-black transition-colors w-max">
+                    Shop Now
+                </a>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="max-w-[1920px] mx-auto px-6 py-12">
+            <div class="flex justify-between items-end mb-8">
+                <h2 class="text-xl font-medium tracking-widest uppercase">Features</h2>
+                <a href="#" class="text-xs underline underline-offset-4 decoration-1 hover:text-gray-600">View All</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group cursor-pointer">
+                    <div class="aspect-[16/10] overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            alt="Feature 1" />
+                    </div>
+                    <p class="text-[10px] text-gray-500 mb-1">30/12/2025</p>
+                    <h3 class="text-sm font-medium uppercase tracking-wide">Stylist Picks: Winter Sale</h3>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="aspect-[16/10] overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?q=80&w=1000&auto=format&fit=crop"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            alt="Feature 2" />
+                    </div>
+                    <p class="text-[10px] text-gray-500 mb-1">29/12/2025</p>
+                    <h3 class="text-sm font-medium uppercase tracking-wide">New In: Acne Studios SS26</h3>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="aspect-[16/10] overflow-hidden mb-4">
+                        <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=1000&auto=format&fit=crop"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            alt="Feature 3" />
+                    </div>
+                    <p class="text-[10px] text-gray-500 mb-1">23/12/2025</p>
+                    <h3 class="text-sm font-medium uppercase tracking-wide">END.'s Community Moments 2025</h3>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-20 pb-10 border-t border-gray-100 mt-10 text-sm">
+        <div class="max-w-[1920px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <div>
+                    <h3 class="font-bold tracking-widest mb-6 text-xs uppercase">About</h3>
+                    <ul class="space-y-3 text-gray-500 font-light">
+                        <li><a href="#" class="hover:text-black">Our Purpose</a></li>
+                        <li><a href="#" class="hover:text-black">Careers</a></li>
+                        <li><a href="#" class="hover:text-black">Affiliates</a></li>
+                        <li><a href="#" class="hover:text-black">Press</a></li>
+                        <li><a href="#" class="hover:text-black">Stores</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold tracking-widest mb-6 text-xs uppercase">Customer Service</h3>
+                    <ul class="space-y-3 text-gray-500 font-light">
+                        <li><a href="#" class="hover:text-black">Help</a></li>
+                        <li><a href="#" class="hover:text-black">Shipping</a></li>
+                        <li><a href="#" class="hover:text-black">Returns</a></li>
+                        <li><a href="#" class="hover:text-black">Payments</a></li>
+                        <li><a href="#" class="hover:text-black">Your Order</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold tracking-widest mb-6 text-xs uppercase">Contact Us</h3>
+                    <ul class="space-y-3 text-gray-500 font-light">
+                        <li><a href="#" class="hover:text-black">Email us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="flex items-start gap-3 mb-6">
+                        <div class="bg-black text-white px-2 py-1 font-bold text-xs">END.</div>
+                        <span class="font-medium">Our Apps</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="border border-gray-300 px-2 py-1 rounded-sm">
+                            <div class="w-6 h-4 bg-gray-200"></div>
+                        </div>
+                        <span class="font-medium">Gift Cards</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center gap-8 mb-4 md:mb-0">
+                    <span class="text-2xl font-bold tracking-[0.2em]">END.</span>
+                    <div class="hidden md:flex gap-4 text-gray-500 text-xs">
+                        <a href="#">Terms & Conditions</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Other Policies</a>
+                        <a href="#">Sitemap</a>
+                    </div>
+                </div>
+
+                <div class="text-gray-400 text-[10px] text-right">
+                    <p>Copyright © Ashworth and Parker Limited (t/a END.) 2026 | All Rights Reserved</p>
+                    <p>Company registration number: 06866013 | VAT number: GB 389764913</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Chat Bubble -->
+        <button
+            class="fixed bottom-8 right-8 bg-black text-white p-4 rounded-full shadow-lg hover:scale-105 transition-transform z-40">
+            <i data-lucide="message-square" class="w-6 h-6 fill-current"></i>
+        </button>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Use Lucide for icons
+        lucide.createIcons();
+
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                drawer.classList.add('hidden');
+                document.body.style.overflow = 'unset';
+            }
+        }
+    </script>
+</body>
+
+</html>

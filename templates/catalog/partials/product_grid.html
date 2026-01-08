@@ -1,0 +1,32 @@
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12">
+    {% for product in products %}
+    <!-- Product Card -->
+    <a href="{% url 'product_detail' product.id %}" class="group block cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden mb-4">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy">
+            {% elif product.gallery_images.first %}
+            <img src="{{ product.gallery_images.first.image.url }}" alt="{{ product.name }}"
+                class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy">
+            {% else %}
+            <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500 text-xs">No
+                Image</div>
+            {% endif %}
+        </div>
+        <div class="space-y-1">
+            <p class="text-sm text-gray-900 font-light leading-tight">{{ product.name }}</p>
+            <p class="text-xs text-gray-500 font-light">{{ product.brand_display }}</p>
+            <p class="text-xs text-gray-500 font-light">{{ product.color|default:"" }}</p>
+            <p class="text-sm font-normal text-gray-900 mt-2">${{ product.price }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% if not products %}
+<div class="py-12 text-center w-full col-span-full">
+    <p class="text-gray-500">No products found matching your filters.</p>
+</div>
+{% endif %}

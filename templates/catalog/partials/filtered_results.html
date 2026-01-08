@@ -1,0 +1,5 @@
+<span id="product-count" hx-swap-oob="true" class="text-xs text-gray-500">{{ products|length }} products</span>
+
+<div hx-swap-oob="innerHTML:#product-grid">
+    {% include "catalog/partials/product_grid.html" %}
+</div>

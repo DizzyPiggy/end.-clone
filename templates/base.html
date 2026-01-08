@@ -1,0 +1,348 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}END. | Contemporary Fashion & Streetwear{% endblock %}</title>
+    <link rel="icon" type="image/svg+xml" href="/media/logo/end-logo.svg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'end-black': '#111111',
+                        'end-gray': '#f5f5f5',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 240s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #ffffff;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Custom utility for marquee */
+        .animate-marquee {
+            white-space: nowrap;
+            animation: marquee 240s linear infinite;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="font-sans text-[#111] bg-white flex flex-col min-h-screen" hx-boost="true" hx-target="#main-content"
+    hx-select="#main-content" hx-swap="outerHTML show:window:top" x-data="{ 
+        cartOpen: false,
+        headerVisible: true, 
+        lastScroll: 0, 
+        handleScroll() { 
+            const current = window.pageYOffset;
+            const delta = current - this.lastScroll;
+            
+            if (current <= 10) {
+                this.headerVisible = true;
+            } else if (delta > 0) { 
+                this.headerVisible = false;
+            } else if (delta < -5) {
+                this.headerVisible = true;
+            }
+            this.lastScroll = current;
+        }
+    }" @scroll.window.throttle.20ms="handleScroll()" @htmx:after-swap.window="headerVisible = true; lastScroll = 0" :class="cartOpen ? 'overflow-hidden' : ''">
+
+    <!-- Header -->
+    <header id="global-header" class="sticky top-0 z-50 bg-white transition-transform duration-300 ease-in-out"
+        hx-preserve :class="headerVisible ? 'translate-y-0' : '-translate-y-full'">
+        <!-- Marquee Bar -->
+        <!-- Marquee Bar -->
+        <div class="bg-[#1A1A1A] text-white text-[10px] py-2.5 overflow-hidden flex">
+            <!-- First scrolling container -->
+            <div
+                class="animate-marquee flex-shrink-0 flex items-center font-medium tracking-widest">
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+            </div>
+            <!-- Duplicate container for seamless loop -->
+             <div
+                class="animate-marquee flex-shrink-0 flex items-center font-medium tracking-widest">
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>ALL IMPORT DUTIES INCLUDED</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+                <span>NEW IN: ANNIE HOOD | STONE ISLAND | TWOJEYS</span>
+                <span class="mx-4 text-[8px]">&bull;</span>
+            </div>
+        </div>
+
+        <!-- Main Header -->
+        <div class="border-b border-gray-100">
+            <div class="max-w-[1920px] mx-auto px-6 h-14 flex items-center justify-between">
+
+                <!-- Left: Gender Toggle -->
+                <div class="hidden md:flex gap-6 text-sm tracking-widest font-medium">
+                    <a href="{% url 'home' %}" class="text-black border-b border-black pb-0.5">MEN</a>
+                    <a href="#" class="text-gray-400 hover:text-black transition-colors">WOMEN</a>
+                </div>
+
+                <!-- Center: Logo -->
+                <div class="absolute left-1/2 transform -translate-x-1/2">
+                    <a href="{% url 'home' %}">
+                        <img src="/media/logo/end-logo.svg" alt="END." class="h-7 w-auto">
+                    </a>
+                </div>
+
+                <!-- Right: Actions -->
+                <div class="flex items-center gap-6">
+                    <div class="hidden lg:flex items-center bg-gray-50 px-3 py-2 rounded-sm w-64">
+                        <i data-lucide="search" class="w-4 h-4 text-gray-400"></i>
+                        <input type="text" placeholder="Search menswear"
+                            class="bg-transparent border-none outline-none text-sm ml-2 w-full placeholder-gray-500" />
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-800">
+                        <button><i data-lucide="user" class="w-5 h-5 stroke-[1.5]"></i></button>
+                        <button><i data-lucide="heart" class="w-5 h-5 stroke-[1.5]"></i></button>
+                        <button @click="cartOpen = true"><i data-lucide="shopping-bag"
+                                class="w-5 h-5 stroke-[1.5]"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav
+                class="hidden lg:flex justify-center h-12 items-center gap-8 text-sm font-medium text-gray-800 border-t border-gray-100">
+                <a href="{% url 'product_list' %}" class="hover:underline underline-offset-4 decoration-1">All</a>
+                <a href="{% url 'product_list' %}?category=clothing"
+                    class="hover:underline underline-offset-4 decoration-1">Clothing</a>
+                <a href="{% url 'product_list' %}?category=footwear"
+                    class="hover:underline underline-offset-4 decoration-1">Footwear</a>
+                <a href="{% url 'product_list' %}?category=accessories"
+                    class="hover:underline underline-offset-4 decoration-1">Accessories</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cart Drawer Partial -->
+    <div hx-preserve id="cart-drawer-wrapper">
+        {% include "partials/cart_drawer.html" %}
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-grow">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#f6f6f6] pt-20 pb-10 border-t border-gray-200 mt-20 text-base">
+        <!-- Mailing List Section (Full Width Border) -->
+        <div class="border-b border-gray-200 pb-20 mb-20">
+            <div class="max-w-[1920px] mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="font-bold tracking-widest text-sm uppercase mb-4">Sign up to the END. Menswear
+                            Mailing
+                            List</h3>
+                        <p class="text-gray-500 font-light text-sm leading-relaxed max-w-lg">
+                            Sign up to hear about exclusive early sale access, and new collections. You can unsubscribe
+                            at
+                            any time. For details on how to do this and how we use your data, please see our <a href="#"
+                                class="underline hover:text-black">Privacy Policy</a>.
+                        </p>
+                    </div>
+                    <div>
+                        <form class="max-w-lg lg:ml-auto">
+                            <label class="block text-xs uppercase font-bold tracking-widest text-gray-500 mb-2">Email
+                                address</label>
+                            <div class="flex items-end gap-4 mb-6">
+                                <input type="email"
+                                    class="flex-grow border-b border-gray-200 py-2 outline-none text-base focus:border-black transition-colors"
+                                    required>
+                                <button type="submit"
+                                    class="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold text-xs tracking-widest uppercase px-6 py-3 transition-colors">Sign
+                                    up</button>
+                            </div>
+                            <div class="flex gap-6 text-gray-800">
+                                <a href="#" class="hover:text-gray-500"><i data-lucide="instagram"
+                                        class="w-5 h-5"></i></a>
+                                <a href="#" class="hover:text-gray-500"><i data-lucide="twitter"
+                                        class="w-5 h-5"></i></a>
+                                <a href="#" class="hover:text-gray-500"><i data-lucide="facebook"
+                                        class="w-5 h-5"></i></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links Grid -->
+        <div class="max-w-[1920px] mx-auto px-6 mb-20">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="font-bold tracking-widest mb-6 text-sm uppercase">About</h3>
+                    <ul class="space-y-3 text-gray-500 font-light text-sm">
+                        <li><a href="#" class="hover:text-black">Our Purpose</a></li>
+                        <li><a href="#" class="hover:text-black">Careers</a></li>
+                        <li><a href="#" class="hover:text-black">Affiliates</a></li>
+                        <li><a href="#" class="hover:text-black">Press</a></li>
+                        <li><a href="#" class="hover:text-black">Stores</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold tracking-widest mb-6 text-sm uppercase">Customer Service</h3>
+                    <ul class="space-y-3 text-gray-500 font-light text-sm">
+                        <li><a href="#" class="hover:text-black">Help</a></li>
+                        <li><a href="#" class="hover:text-black">Shipping</a></li>
+                        <li><a href="#" class="hover:text-black">Returns</a></li>
+                        <li><a href="#" class="hover:text-black">Payments</a></li>
+                        <li><a href="#" class="hover:text-black">Your Order</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold tracking-widest mb-6 text-sm uppercase">Contact Us</h3>
+                    <ul class="space-y-3 text-gray-500 font-light text-sm">
+                        <li><a href="#" class="hover:text-black">Email us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="flex items-start gap-3 mb-6">
+                        <div class="bg-black text-white px-2 py-1 font-bold text-xs">END.</div>
+                        <span class="font-medium">Our Apps</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="border border-gray-300 px-2 py-1 rounded-sm">
+                            <div class="w-6 h-4 bg-gray-200"></div>
+                        </div>
+                        <span class="font-medium">Gift Cards</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright / Bottom Bar (Full Width Border) -->
+        <div class="border-t border-gray-200 pt-8">
+            <div class="max-w-[1920px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center gap-8 mb-4 md:mb-0">
+                    <img src="/media/logo/end-logo.svg" alt="END." class="h-6 w-auto">
+                    <div class="hidden md:flex gap-4 text-gray-500 text-sm">
+                        <a href="#">Terms & Conditions</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Other Policies</a>
+                        <a href="#">Sitemap</a>
+                    </div>
+                </div>
+
+                <div class="text-gray-400 text-[10px] text-right">
+                    <p>Copyright © Ashworth and Parker Limited (t/a END.) 2026 | All Rights Reserved</p>
+                    <p>Company registration number: 06866013 | VAT number: GB 389764913</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Chat Bubble -->
+        <button
+            class="fixed bottom-8 right-8 bg-black text-white p-4 rounded-full shadow-lg hover:scale-105 transition-transform z-40">
+            <i data-lucide="message-square" class="w-6 h-6 fill-current"></i>
+        </button>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Init Lucide on load and on HTMX content swaps
+        lucide.createIcons();
+
+        // Prevent multiple listeners
+        if (!window.htmxIconsInitialized) {
+            document.addEventListener("htmx:afterSwap", function (evt) {
+                lucide.createIcons();
+            });
+            window.htmxIconsInitialized = true;
+        }
+    </script>
+</body>
+
+</html>
