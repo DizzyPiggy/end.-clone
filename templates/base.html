@@ -185,8 +185,9 @@
                     <div class="flex items-center gap-4 text-gray-800">
                         <button><i data-lucide="user" class="w-5 h-5 stroke-[1.5]"></i></button>
                         <button><i data-lucide="heart" class="w-5 h-5 stroke-[1.5]"></i></button>
-                        <button @click="cartOpen = true"><i data-lucide="shopping-bag"
-                                class="w-5 h-5 stroke-[1.5]"></i></button>
+                        <div id="cart-icon-container" class="relative inline-block">
+                            {% include "partials/cart_icon_badge.html" %}
+                        </div>
                     </div>
                 </div>
             </div>

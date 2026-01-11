@@ -9,7 +9,7 @@ def cart_detail_view(request):
         'cart': cart,
         'total_price': cart.get_total_price()
     }
-    if request.htmx:
+    if request.headers.get('HX-Request'):
          return render(request, 'partials/cart_drawer.html', context)
     return render(request, 'cart/cart_detail.html', context)
 
@@ -24,9 +24,13 @@ def add_to_cart_view(request):
     cart.add(product=product, size=size, quantity=quantity)
     
     context = {
-        'cart_total_items': len(cart)
+        'cart': cart,
+        'total_price': cart.get_total_price(),
+        'cart_total_items': len(cart),
+        'open_drawer': True,
+        'update_badge': True
     }
-    return render(request, 'partials/cart_icon_badge.html', context)
+    return render(request, 'cart/partials/cart_drawer_content.html', context)
 
 @require_POST
 def update_cart_item_view(request, item_id):
@@ -51,9 +55,11 @@ def update_cart_item_view(request, item_id):
 
     context = {
         'cart': cart,
-        'total_price': cart.get_total_price()
+        'total_price': cart.get_total_price(),
+        'cart_total_items': len(cart),
+        'update_badge': True
     }
-    return render(request, 'partials/cart_summary.html', context)
+    return render(request, 'cart/partials/cart_drawer_content.html', context)
 
 @require_POST
 def remove_from_cart_view(request, item_id):
@@ -69,6 +75,8 @@ def remove_from_cart_view(request, item_id):
 
     context = {
         'cart': cart,
-        'total_price': cart.get_total_price()
+        'total_price': cart.get_total_price(),
+        'cart_total_items': len(cart),
+        'update_badge': True
     }
-    return render(request, 'partials/cart_summary.html', context)
+    return render(request, 'cart/partials/cart_drawer_content.html', context)

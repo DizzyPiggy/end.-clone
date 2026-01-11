@@ -12,11 +12,11 @@
         <span>{{ product.name }}</span>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24 max-w-[1600px] mx-auto">
         <!-- Left: Gallery (Thumbnails + Main Images) -->
-        <div class="lg:col-span-7 flex gap-4">
+        <div class="lg:col-span-7 flex gap-8">
             <!-- Thumbnails (Hidden on mobile, sticky on desktop) -->
-            <div class="hidden lg:flex flex-col gap-[3px] sticky h-fit w-16 flex-shrink-0 transition-[top] duration-300"
+            <div class="hidden lg:flex flex-col gap-[3px] sticky h-fit w-32 flex-shrink-0 transition-[top] duration-300"
                 :class="headerVisible ? 'top-28' : 'top-0'">
                 {% if product.image %}
                 <a href="#img-main"
@@ -53,7 +53,7 @@
         <!-- Right: Product Info -->
         <div class="lg:col-span-5 sticky h-fit transition-[top] duration-300"
             :class="headerVisible ? 'top-28' : 'top-0'"
-            x-data="{ selectedSize: null }">
+            x-data="{ selectedSize: '', error: false }">
             <div class="sticky top-32 text-center px-8">
                 <!-- Header -->
                 <div class="mb-8">
@@ -75,8 +75,8 @@
                         {% for p_size in product.sizes.all %}
                         <button
                             class="size-btn py-3 text-xs font-bold tracking-wider border"
-                            :class="selectedSize === '{{ p_size.size }}' ? 'border-black bg-white text-black ring-1 ring-black' : 'border-gray-200 text-gray-500 hover:border-gray-400'"
-                            @click="selectedSize = '{{ p_size.size }}'">{{ p_size.size }}</button>
+                            :class="selectedSize === '{{ p_size.size }}' ? 'bg-black text-white border-black' : 'bg-white text-black border-gray-200 hover:bg-gray-100'"
+                            @click="selectedSize = '{{ p_size.size }}'; error = false">{{ p_size.size }}</button>
                         {% endfor %}
                     </div>
                     {% else %}
@@ -95,10 +95,19 @@
 
                 <!-- Actions -->
                 <div class="flex flex-col gap-3 mb-10">
-                    <button @click="cartOpen = true"
-                        class="w-full bg-[#1e1e1e] text-white py-4 text-sm font-bold tracking-[0.15em] hover:bg-black transition-colors">
-                        ADD TO CART
-                    </button>
+                    <form hx-post="{% url 'cart:add' %}" hx-swap="none">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="size" :value="selectedSize">
+                        
+                        <button type="button"
+                            @click.prevent="if (!selectedSize) { error = true } else { $el.closest('form').requestSubmit() }"
+                            class="w-full bg-[#1e1e1e] text-white py-4 text-sm font-bold tracking-[0.15em] hover:bg-black transition-colors">
+                            ADD TO CART
+                        </button>
+                        <div x-show="error" class="text-red-500 text-xs mt-2 text-center" style="display: none;">Please select a size</div>
+                    </form>
                     <button
                         class="w-full bg-white border border-gray-200 text-black py-4 text-sm font-bold tracking-[0.15em] hover:bg-gray-50 transition-colors">
                         ADD TO WISHLIST

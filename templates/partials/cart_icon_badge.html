@@ -1,0 +1,8 @@
+    <button @click="cartOpen = true" class="relative">
+        <i data-lucide="shopping-bag" class="w-5 h-5 stroke-[1.5]"></i>
+        {% if cart_total_items > 0 %}
+        <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+            {{ cart_total_items }}
+        </span>
+        {% endif %}
+    </button>

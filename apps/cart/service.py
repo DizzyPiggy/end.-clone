@@ -62,6 +62,7 @@ class Cart:
         product_map = {str(p.id): p for p in products}
 
         for key, item in cart.items():
+            item = item.copy() # Avoid mutating the session data explicitly
             item['product'] = product_map.get(item['product_id'])
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
