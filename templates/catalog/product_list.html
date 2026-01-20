@@ -16,7 +16,7 @@
 
         <!-- Sidebar Filters -->
         <aside class="hidden lg:block w-64 flex-shrink-0 sticky top-32 h-[calc(100vh-8rem)] overflow-y-auto pr-4 scrollbar-hide">
-            <form id="filter-form" hx-get="{% url 'product_list' %}" hx-trigger="change" hx-target="#product-grid" hx-swap="none" class="space-y-8">
+            <form id="filter-form" hx-get="{% url 'catalog:product_list' %}" hx-trigger="change" hx-target="#product-grid" hx-swap="none" class="space-y-8">
                 {% if current_category %}
                 <input type="hidden" name="category" value="{{ current_category }}">
                 {% endif %}

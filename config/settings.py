@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     # Custom Apps
     'apps.catalog',
     'apps.cart',
+    'apps.orders',
+    'apps.payments',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +141,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 CART_SESSION_ID = 'cart'
+
+# NOWPayments Settings
+NOWPAYMENTS_API_KEY = config('NOWPAYMENTS_API_KEY', default='your_api_key_here')
+NOWPAYMENTS_IPN_SECRET = config('NOWPAYMENTS_IPN_SECRET', default='your_ipn_secret_here')

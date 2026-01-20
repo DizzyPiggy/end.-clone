@@ -90,14 +90,6 @@
     </div>
     {% endif %}
 
-    <!-- HTMX OOB Updates -->
-    {% if update_badge %}
-    <div id="cart-icon-container" hx-swap-oob="true">
-        {% include "partials/cart_icon_badge.html" with cart_total_items=cart_total_items %}
-    </div>
-    {% endif %}
-
-    <!-- Auto-open Drawer Script -->
     <!-- Auto-open Drawer Script -->
     {% if open_drawer %}
     <script>
@@ -105,3 +97,10 @@
     </script>
     {% endif %}
 </div>
+
+<!-- HTMX OOB Updates - MUST be outside the main drawer div to target the header -->
+{% if update_badge %}
+<div id="cart-icon-container" hx-swap-oob="true">
+    {% include "partials/cart_icon_badge.html" with cart_total_items=cart_total_items %}
+</div>
+{% endif %}

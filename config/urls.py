@@ -19,8 +19,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('apps.catalog.urls')),
+    path('', include('apps.catalog.urls', namespace='catalog')),
     path('cart/', include(('apps.cart.urls', 'cart'), namespace='cart')),
+    path('orders/', include('apps.orders.urls', namespace='orders')),
+    path('payments/', include('apps.payments.urls', namespace='payments')),
 ]
 
 from django.conf import settings

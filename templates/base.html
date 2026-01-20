@@ -164,13 +164,13 @@
 
                 <!-- Left: Gender Toggle -->
                 <div class="hidden md:flex gap-6 text-sm tracking-widest font-medium">
-                    <a href="{% url 'home' %}" class="text-black border-b border-black pb-0.5">MEN</a>
+                    <a href="{% url 'catalog:home' %}" class="text-black border-b border-black pb-0.5">MEN</a>
                     <a href="#" class="text-gray-400 hover:text-black transition-colors">WOMEN</a>
                 </div>
 
                 <!-- Center: Logo -->
                 <div class="absolute left-1/2 transform -translate-x-1/2">
-                    <a href="{% url 'home' %}">
+                    <a href="{% url 'catalog:home' %}">
                         <img src="/media/logo/end-logo.svg" alt="END." class="h-7 w-auto">
                     </a>
                 </div>
@@ -195,12 +195,12 @@
             <!-- Navigation Menu -->
             <nav
                 class="hidden lg:flex justify-center h-12 items-center gap-8 text-sm font-medium text-gray-800 border-t border-gray-100">
-                <a href="{% url 'product_list' %}" class="hover:underline underline-offset-4 decoration-1">All</a>
-                <a href="{% url 'product_list' %}?category=clothing"
+                <a href="{% url 'catalog:product_list' %}" class="hover:underline underline-offset-4 decoration-1">All</a>
+                <a href="{% url 'catalog:product_list' %}?category=clothing"
                     class="hover:underline underline-offset-4 decoration-1">Clothing</a>
-                <a href="{% url 'product_list' %}?category=footwear"
+                <a href="{% url 'catalog:product_list' %}?category=footwear"
                     class="hover:underline underline-offset-4 decoration-1">Footwear</a>
-                <a href="{% url 'product_list' %}?category=accessories"
+                <a href="{% url 'catalog:product_list' %}?category=accessories"
                     class="hover:underline underline-offset-4 decoration-1">Accessories</a>
             </nav>
         </div>
