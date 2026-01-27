@@ -14,11 +14,22 @@ def home(request):
     }
     return render(request, 'pages/home.html', context)
 
-from django.db.models import Max
+def women(request):
+    return render(request, 'pages/women.html')
+
+from django.db.models import Max, Q
 
 def product_list(request):
     products = Product.objects.all()
     category_name = request.GET.get('category')
+    search_query = request.GET.get('q')
+    
+    # 0. Search Filter
+    if search_query:
+        products = products.filter(
+            Q(name__icontains=search_query) | 
+            Q(description__icontains=search_query)
+        )
     
     # 1. Base Filter (Category)
     if category_name:

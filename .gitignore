@@ -34,3 +34,5 @@ static/
 # System
 .DS_Store
 Thumbs.db
+
+fixes.md

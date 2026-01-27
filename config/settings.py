@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-dsx5ud=3@veb03!bxg5mn&7$usq%y+d4)$79u6&2uy470w9h(_')
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
@@ -143,5 +143,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CART_SESSION_ID = 'cart'
 
 # NOWPayments Settings
-NOWPAYMENTS_API_KEY = config('NOWPAYMENTS_API_KEY', default='your_api_key_here')
-NOWPAYMENTS_IPN_SECRET = config('NOWPAYMENTS_IPN_SECRET', default='your_ipn_secret_here')
+NOWPAYMENTS_API_KEY = config('NOWPAYMENTS_API_KEY')
+NOWPAYMENTS_IPN_SECRET = config('NOWPAYMENTS_IPN_SECRET')

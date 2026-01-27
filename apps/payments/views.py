@@ -6,6 +6,8 @@ from django.views.decorators.csrf import csrf_exempt
 from apps.orders.models import Order
 from .services import NowPaymentsService
 
+from django.urls import reverse
+
 def payment_process(request):
     order_id = request.session.get('order_id')
     order = get_object_or_404(Order, id=order_id)
@@ -20,11 +22,17 @@ def payment_process(request):
     service = NowPaymentsService()
     # Using 'usd' as base currency, assuming product prices are in USD
     # You can change this based on project requirements
+    
+    success_url = request.build_absolute_uri(reverse('orders:payment_success'))
+    failed_url = request.build_absolute_uri(reverse('orders:payment_failed'))
+    
     response = service.create_invoice(
         order_id=order.id,
         amount=order.get_total_cost(),
         currency='usd',
-        description=f'Order {order.id}'
+        description=f'Order {order.id}',
+        success_url=success_url,
+        cancel_url=failed_url
     )
     
     if response and 'invoice_url' in response:
