@@ -70,4 +70,4 @@ class NowPaymentsService:
         )
         calculated_signature = digest.hexdigest()
         
-        return calculated_signature == signature
+        return hmac.compare_digest(calculated_signature, signature)

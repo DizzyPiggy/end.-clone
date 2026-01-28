@@ -42,6 +42,13 @@ def order_create(request):
     return render(request, 'orders/order/create.html', context)
 
 def order_confirmation(request, order_id):
+    # Verify the order belongs to the current session (basic IDOR protection)
+    # Ideally, for logged-in users, we check request.user. For guests, we rely on session.
+    session_order_id = request.session.get('order_id')
+    if not session_order_id or str(session_order_id) != str(order_id):
+        # Fallback or redirect if they try to access someone else's order
+        return redirect('catalog:product_list')
+        
     order = get_object_or_404(Order, id=order_id)
     return render(request, 'orders/order/confirmed.html', {'order': order})
 

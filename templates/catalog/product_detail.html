@@ -70,7 +70,7 @@
                         <span class="text-gray-500" x-text="selectedSize ? selectedSize : 'Select a size'">Select a size</span>
                         <span class="underline cursor-pointer">Size guide</span>
                     </div>
-                    {% if product.sizes.exists %}
+                    {% if product.sizes.all %}
                     <div class="grid grid-cols-4 gap-2">
                         {% for p_size in product.sizes.all %}
                         <button
@@ -181,8 +181,8 @@
                     <img src="{{ product.image.url }}" alt="{{ product.name }}"
                         class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
                         loading="lazy">
-                    {% elif product.gallery_images.first %}
-                    <img src="{{ product.gallery_images.first.image.url }}" alt="{{ product.name }}"
+                    {% elif product.gallery_images.all|first %}
+                    <img src="{{ product.gallery_images.all.0.image.url }}" alt="{{ product.name }}"
                         class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500"
                         loading="lazy">
                     {% else %}

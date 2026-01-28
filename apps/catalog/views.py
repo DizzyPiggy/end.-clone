@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
+import random
 
 def home(request):
     # New In: Clothing only, 10 items (2 rows)
@@ -20,7 +21,7 @@ def women(request):
 from django.db.models import Max, Q
 
 def product_list(request):
-    products = Product.objects.all()
+    products = Product.objects.all().select_related('category').prefetch_related('product_brands__brand')
     category_name = request.GET.get('category')
     search_query = request.GET.get('q')
     
@@ -64,7 +65,10 @@ def product_list(request):
         products = products.filter(price__lte=max_price)
 
     # Default ordering if not filtered by relevance or other
-    products = products.order_by('?')
+    # Optimization: Avoid order_by('?') for DoS protection
+    # For large datasets, we should implement a better strategy (e.g. shuffling a list of IDs)
+    # For now, we'll order by created_at. If random is needed, we should select IDs first.
+    products = products.order_by('-created_at')
 
     # 4. Context Data
     from .models import Brand
@@ -89,9 +93,29 @@ def product_list(request):
     return render(request, 'catalog/product_list.html', context)
 
 def product_detail(request, pk):
-    product = get_object_or_404(Product, pk=pk)
+    # Optimize main product query
+    queryset = Product.objects.select_related(
+        'category', 
+        'clothing', 
+        'footwear', 
+        'accessory'
+    ).prefetch_related(
+        'gallery_images', 
+        'sizes'
+    )
+    product = get_object_or_404(queryset, pk=pk)
+    
     # Get 4 random products from the same category, excluding current product
-    related_products = Product.objects.filter(category=product.category).exclude(pk=pk).order_by('?')[:4]
+    # Optimization: Avoid order_by('?') for DoS protection
+    related_qs = Product.objects.filter(category=product.category).exclude(pk=pk)
+    all_related_ids = list(related_qs.values_list('id', flat=True))
+    
+    if len(all_related_ids) > 4:
+        random_ids = random.sample(all_related_ids, 4)
+        # Prefetch images for related products to avoid N+1 in template loop
+        related_products = Product.objects.filter(id__in=random_ids).prefetch_related('gallery_images')
+    else:
+        related_products = related_qs.prefetch_related('gallery_images')
     
     context = {
         'product': product,

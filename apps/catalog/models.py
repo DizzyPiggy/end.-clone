@@ -39,11 +39,13 @@ class Product(models.Model):
     
     @property
     def brand_display(self):
-        first_brand = self.product_brands.first()
-        return first_brand.brand.name if first_brand else ""
+        # Use .all() to leverage prefetch_related cache if available
+        # This avoids hitting the DB for every product if prefetched
+        brands = self.product_brands.all()
+        return brands[0].brand.name if brands else ""
 
     # KEEP image field for the main thumbnail
-    image = models.ImageField(upload_to='products/', blank=True, null=True)
+    image = models.ImageField(upload_to='products/', blank=True, null=True, max_length=500)
     
     # Add color field
     color = models.CharField(max_length=100, blank=True, null=True) 
@@ -98,7 +100,7 @@ class ProductBrand(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='gallery_images')
-    image = models.ImageField(upload_to='product_gallery/')
+    image = models.ImageField(upload_to='product_gallery/', max_length=500)
 
     class Meta:
         verbose_name = "Product Image"
